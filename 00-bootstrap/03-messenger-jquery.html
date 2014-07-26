@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap V3 template</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript">  
+		function WebSocketTest() {
+			if ('WebSocket' in window) {
+				// Let us open a web socket
+				var ws = new WebSocket('ws://localhost:8000/', 'echo-protocol');
+				ws.onopen = function(evt) {
+					alert('open');
+
+					ws.send('Hi Server');
+				};
+
+				ws.onmessage = function(evt) {
+
+					var received_msg = evt.data;
+
+					alert(received_msg);
+				};
+
+				ws.onclose = function(evt) {
+					alert('close');
+				};
+			} else {
+				// The browser doesn't support WebSocket
+				alert('WebSocket NOT supported by your Browser!');
+			}
+		}
+		</script>
+	</head>
+	<body>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">Fred</div>
+			<div class="panel-body">hi</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">Fred</div>
+			<div class="panel-body">hi</div>
+		</div>
+
+		<div class="navbar navbar-inverse navbar-fixed-bottom">
+			<ul class="nav navbar-nav">
+				<li><input type="text" class="form-control"></li>
+				<li><button class="btn btn-success">Send</button></li>
+			</ul>
+		</div>
+
+	</body>
+</html>
+
